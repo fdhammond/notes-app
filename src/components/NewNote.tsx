@@ -1,12 +1,21 @@
-import Form from "./Form"
+import Form from './Form';
 
-export default function NewNote() {
+interface Note {
+    title: string;
+    body: string;
+    id: string;
+}
+
+interface NewNoteProps {
+    newNote: Note[];
+    setNewNote: (notes: Note[]) => void;
+}
+
+export default function NewNote({ newNote, setNewNote }: NewNoteProps) {
     return (
-        <>
-            <div className="mx-8 my-8">
-                <h1>New Note</h1>
-                <Form />
-            </div>
-        </>
-    )
+        <div>
+            <h1>Create a New Note</h1>
+            <Form newNote={newNote} setNewNote={setNewNote} />
+        </div>
+    );
 }
