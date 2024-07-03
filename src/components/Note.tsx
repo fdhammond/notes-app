@@ -22,7 +22,9 @@ export default function Note({ title, body, noteId }: NoteProps) {
                         Edit
                     </Link>
                 </button>
-                <button className="border-2 bg-red-500 px-4 py-2 rounded-2xl text-white">Delete</button>
+                <button className="border-2 bg-red-500 px-4 py-2 rounded-2xl text-white">
+                    Delete
+                </button>
             </div>
         </div>
     );
