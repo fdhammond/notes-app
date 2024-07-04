@@ -103,16 +103,28 @@ export default function Form({ newNote, setNewNote, noteId, title = '', body = '
                     <button type='submit' className='bg-blue-500 rounded-xl px-6 py-2 text-white'>
                         {noteId ? 'Edit' : 'Add'}
                     </button>
-                    <button type='button' className='bg-gray-500 rounded-xl px-6 py-2 text-white'>Cancel</button>
+                    <button type='button' className='bg-gray-500 rounded-xl px-6 py-2 text-white'>
+                        <Link to="/">
+                            Cancel
+                        </Link>
+                    </button>
                 </div>
             </form>
                 ) : (
                     <>
-                        <button>
-                            <Link to="/">
-                                Go Home
-                            </Link>
-                        </button>
+                        <div className='w-1/2 h-full flex justify-center gap-28'>
+                                <button
+                                    onClick={() => setIsEditing(!isEditing)}
+                                    className='px-4 py-2 border-none text-xl font-bold text-white bg-blue-400 hover:bg-black hover:text-white'
+                                >
+                                Create New
+                            </button>
+                            <button className='px-4 py-2 border-none text-xl font-bold text-white bg-black hover:bg-white hover:text-black'>
+                                <Link to="/">
+                                    Go Home
+                                </Link>
+                            </button>
+                        </div>
                     </>
 
                 )

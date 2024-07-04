@@ -12,7 +12,13 @@ interface HomeProps {
     setNewNote: (notes: Note[]) => void;
 }
 
-export default function Home({ newNote }: HomeProps) {
+export default function Home({ newNote, setNewNote }: HomeProps) {
+    const handleDeleteNote = (noteId: string) => {
+        const updatedNotes = newNote.filter(note => note.id !== noteId);
+        setNewNote(updatedNotes);
+        localStorage.setItem("newNote", JSON.stringify(updatedNotes));
+    };
+
     return (
         <div className='flex justify-center align-center w-full h-full'>
             <h1>Home</h1>
@@ -24,7 +30,7 @@ export default function Home({ newNote }: HomeProps) {
                 <div className='w-full h-full flex flex-wrap'>
                     {newNote.map(note => (
                         <div key={note.id} className='border-2 gap-4 flex justify-center align-middle border-black mx-4 my-4'>
-                            <Note title={note.title} body={note.body} noteId={note.id} />
+                            <Note title={note.title} body={note.body} noteId={note.id} onDelete={handleDeleteNote} />
                         </div>
                     ))}
                 </div>
