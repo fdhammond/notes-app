@@ -11,8 +11,8 @@ interface EditNoteProps {
     setNewNote: (notes: Note[]) => void
 }
 export default function EditNote({ newNote, setNewNote }: EditNoteProps) {
-    const { id } = useParams()
-    const editNote = newNote.filter(note => note.id === id);
+    const { id } = useParams<{ id: string }>()
+    const editNote = newNote.find(note => note.id === id);
 
     if (!editNote) return <div>Note Not Found</div>;
 
@@ -23,9 +23,9 @@ export default function EditNote({ newNote, setNewNote }: EditNoteProps) {
 
                 <div className="mt-12">
                     <Form
-                        title={editNote[0].title}
-                        body={editNote[0].body}
-                        noteId={editNote[0].id}
+                        title={editNote.title}
+                        body={editNote.body}
+                        noteId={editNote.id}
                         newNote={newNote}
                         setNewNote={setNewNote}
                     />
